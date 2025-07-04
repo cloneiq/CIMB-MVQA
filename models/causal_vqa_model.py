@@ -6,7 +6,7 @@ from models.vision_encoders import swin_transformer as swin
 from models.language_encoders.bert_model import BertConfig, BertCrossLayer
 from transformers import RobertaModel, RobertaConfig, RobertaTokenizer
 import numpy as np
-from utils.lossfc_tools import contrastive_factorization_loss, factorization_loss
+from utils.lossfc_tools import contrastive_decoupling_loss
 from models.cross_modal_graph import CausalGraphNetwork
 from . import simple_cnn
 from . import auto_encoder
