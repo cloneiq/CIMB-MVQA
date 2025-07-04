@@ -273,7 +273,7 @@ class CausalVQAModel(nn.Module):
                 pool_ori_image_feats = ori_image_feats[:, 0, :] + ori_image_feats[:, 1:, :].mean(dim=1)
                 pool_pos_image_feats = pos_image_feats[:, 0, :] + pos_image_feats[:, 1:, :].mean(dim=1)
                 pool_neg_image_feats = neg_image_feats[:, 0, :] + neg_image_feats[:, 1:, :].mean(dim=1)
-                cf_loss = contrastive_factorization_loss(pool_ori_image_feats, pool_pos_image_feats, pool_neg_image_feats)
+                cf_loss = contrastive_decoupling_loss(pool_ori_image_feats, pool_pos_image_feats, pool_neg_image_feats)
             return logits, cf_loss, v_feat, q_feats, decoder
         elif training and v_mask is not None:
             return logits
