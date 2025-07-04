@@ -1,6 +1,6 @@
 # CIMB-MVQA: Causal Intervention on Modality-specific Biases for Medical Visual Question Answering
 
-
+## Abstract
 
 <div  align="center">    
 <img src="./imgs/main_structure.png" 
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ├── test
 ```
 ### Dataset
-Please follow [here](https://github.com/zhjohnchan/M3AE?tab=readme-ov-file#1-dataset-preparation-1) and only use the `SLAKE, VQA RAD, and MedVQA 2019 datasets`.
+Please follow [here](https://github.com/zhjohnchan/M3AE?tab=readme-ov-file#1-dataset-preparation-1) and only use the `SLAKE, VQA RAD, and MedVQA 2019 datasets`, all of which should be placed under the `/data` directory.
 
 ### Pretrained
 Download the [m3ae pretrained weight](https://drive.google.com/drive/folders/1b3_kiSHH8khOQaa7pPiX_ZQnUIBxeWWn) and put it in the `/pretrained_weights`.
