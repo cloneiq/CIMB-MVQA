@@ -67,7 +67,7 @@ def off_diagonal(x):
     return x.flatten()[:-1].view(n - 1, n + 1)[:, 1:].flatten()
 
 
-def factorization_loss(f_a, f_b, f_c=None, lambda_neg=0.5):
+def decoupling_loss(f_a, f_b, f_c=None, lambda_neg=0.5):
     def norm(x):
         return (x - x.mean(0)) / (x.std(0) + 1e-6)
 
@@ -115,7 +115,7 @@ def info_nce_loss(
     return loss
 
 
-def contrastive_factorization_loss(
+def contrastive_decoupling_loss(
         f_a: torch.Tensor,
         f_b: torch.Tensor,
         f_c: torch.Tensor,
