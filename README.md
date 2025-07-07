@@ -11,7 +11,8 @@ This repository provides the official implementation of **CIMB-MVQA**, a modalit
 width = "700" height = "300" 
 alt="1" align=center />
 </div>
-This paper has been submitted to **Medical Image Analysis** and is currently under peer review.
+
+This paper has been submitted to **Medical Image Analysis** .
 
 ## Requirements
 ```bash
