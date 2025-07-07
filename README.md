@@ -1,20 +1,24 @@
 # CIMB-MVQA: Causal Intervention on Modality-specific Biases for Medical Visual Question Answering
 
-## Abstract
+## Overview
+
+Medical Visual Question Answering (Med-VQA) aims to combine medical image understanding with clinical language reasoning, enabling automatic answering of natural language questions grounded on medical images. Recent progress in deep learning has achieved impressive results on Med-VQA benchmarks; however, existing models still suffer from spurious correlations caused by data bias and structural confounders in both the visual and language modalities. These biases compromise the model’s robustness and generalization in realistic clinical environments.
+
+This repository provides the official implementation of **CIMB-MVQA**, a modality-specific causal intervention framework for Med-VQA. CIMB-MVQA addresses cross-modal bias by explicitly modeling and adjusting for confounding factors. Our method combines causal intervention, contrastive representation learning, feature disentanglement, dual semantic masking, and a vision-guided pseudo-token injection mechanism to achieve higher answer accuracy, better causal interpretability, and stronger robustness against distribution shifts. The source code is publicly available at https://github.com/cloneiq/CIMB-MVQA. The overall architecture of the proposed method is depicted in the figure below.
 
 <div  align="center">    
 <img src="./imgs/main_structure.png" 
 width = "700" height = "300" 
 alt="1" align=center />
 </div>
-
+This paper has been submitted to **Medical Image Analysis** and is currently under peer review.
 
 ## Requirements
 ```bash
 pip install -r requirements.txt 
 ```
 
-## Preparation
+## Project Structure
 ```bash
 ├── checkpoints
 ├── data
@@ -37,8 +41,15 @@ pip install -r requirements.txt
 ├── tain
 ├── test
 ```
-### Dataset
-Please follow [here](https://github.com/zhjohnchan/M3AE?tab=readme-ov-file#1-dataset-preparation-1) and only use the `SLAKE, VQA RAD, and MedVQA 2019 datasets`, all of which should be placed under the `/data` directory.
+## Data Preparation
+
+### Datasets
+
+1. Download the datasets.
+   1. SLAKE: An English-Chinese bilingual Med-VQA benchmark containing 642 radiology images (CT, MRI, X-ray) and 14 ,028 question-answer pairs, plus pixel-level masks and a medical knowledge graph; download: https://www.med-vqa.com/slake/.
+   2. VQA RAD: A clinician-curated dataset built from MedPix that provides 315 radiology images and 3 ,515 question-answer pairs for visual question answering; download: https://osf.io/89kps/.  
+   3. MedVQA 2019: The ImageCLEF 2019 challenge corpus with 3 ,200 training images (12 ,792 QA), 500 validation images (2 ,000 QA) and 500 test images (500 questions) covering modality, plane, organ and abnormality queries; download: https://zenodo.org/record/10499039
+2. Place the files under the `data/` directory.
 
 ### Pretrained
 Download the [m3ae pretrained weight](https://drive.google.com/drive/folders/1b3_kiSHH8khOQaa7pPiX_ZQnUIBxeWWn) and put it in the `/pretrained_weights`.
@@ -58,7 +69,20 @@ python main.py
 python test.py
 ```
 
+## Features
+
+- Causal intervention framework to systematically debias both visual and linguistic confounders
+
+- Front-door adjustment mechanism to mitigate non-observable visual biases
+
+- Back-door intervention strategy for suppressing observed language confounding signals
+
+- Robustness and generalization validated across both standard and intentionally biased Med-VQA datasets
+
+- Modular, extensible PyTorch implementation with reproducible training pipelines
+
 ## Result
+
 | Method     | Reference |           | VQA-RAD    |             |           | SLAKE      |             |
 |:-------------------:|:----------:|:-----:|:------:|:-------:|:-----:|:------:|:-------:|
 |               |       | **Open** | **Closed** | **Overall** | **Open** | **Closed** | **Overall** |
@@ -83,7 +107,29 @@ python test.py
 | CCIS-MVQA |  TMI’24   |     88.78      |     88.16      |    84.18     |     12.35      |     68.37      |
 | CIMB-MVQA |   Ours    | **92.74**±0.11 | **88.76**±0.13 |  86.40±0.36  | **36.21**±0.27 | **80.27**±0.32 |
 
+## Future Work
+
+-  Extension to multi-lingual datasets and multi-task scenarios
+- Integration with medical knowledge  
+- Support for additional clinical datasets
+- Benchmark with future SOTA methods
+
+## Contributing
+
+We welcome pull requests and issues!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/license/MIT) file for details.
+
 ## Acknowledgement
 
 Our project references the codes in the following repos. Thanks for their works and sharing.
 * [M3AE](https://github.com/zhjohnchan/M3AE)
+
+## Contact
+
+**First Author**: Bing Liu, Kunming University of Science and Technology Kunming, Yunnan CHINA, email: 2717382435@qq.com
+
+**Corresponding Author**: Lijun Liu, Ph.D., Kunming University of Science and Technology Kunming, Yunnan CHINA, email: cloneiq@kust.edu.cn
+
