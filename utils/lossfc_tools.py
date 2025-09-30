@@ -138,3 +138,53 @@ def contrastive_decoupling_loss(
     total_loss = fac_loss + alpha * nce_loss
 
     return total_loss
+
+@torch.no_grad()
+def build_channel_weight(z_o, z_a=None, alpha=0.6, gamma=2.0, eps=1e-8):
+  
+    e = _norm01(torch.abs(z_o), dim=-1, eps=eps)       
+
+    if z_a is None:
+        m = e
+    else:
+        inv = 1.0 - _norm01(torch.abs(z_o - z_a), dim=-1, eps=eps)
+        m = alpha * e + (1 - alpha) * inv                  
+    m = torch.clamp(m, 0.0, 1.0) ** gamma                   
+    m = torch.clamp(m, min=eps)                            
+    return m.detach()
+
+def weighted_cosine(x, y, w, eps=1e-12):
+    """
+    x,y: (B,D), w: (B,D) 
+    """
+    xw = x * w
+    yw = y * w
+    num = (xw * yw).sum(dim=-1)
+    den = xw.norm(dim=-1) * yw.norm(dim=-1) + eps
+    return num / den
+
+def b_debiased_contrastive_vector(
+    z_o, z_a, z_h,                     
+    same_bg=None,                       
+    tau=0.1, h=0.05, beta_b=1.0,
+    alpha=0.6, gamma=2.0
+):
+    m = build_channel_weight(z_o, z_a=z_a, alpha=alpha, gamma=gamma)   # (B,D)
+
+    sim_oa = weighted_cosine(z_o, z_a, m)                              # (B,)
+    sim_oh = weighted_cosine(z_o, z_h, m)                              # (B,)
+
+    if same_bg is None:
+        same_bg = torch.ones_like(sim_oh)
+    w = torch.where(
+        same_bg > 0,
+        torch.exp(torch.tensor(beta_b, device=sim_oh.device, dtype=sim_oh.dtype)),
+        torch.ones_like(sim_oh)
+    )
+
+    pos = torch.exp(sim_oa / tau)
+    neg_logit = torch.clamp(sim_oh - h, min=0) / tau
+    neg = torch.exp(torch.log(w + 1e-8) + neg_logit)
+    loss = -torch.log(pos / (pos + neg + 1e-12)).mean()
+    return loss
+
