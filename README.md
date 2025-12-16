@@ -12,7 +12,7 @@ width = "700" height = "300"
 alt="1" align=center />
 </div>
 
-This paper has been submitted to **Medical Image Analysis** .
+This paper was published in  **Medical Image Analysis**, Volume 107, Part B, 2026, Article 103850.
 
 ## Requirements
 ```bash
@@ -127,6 +127,28 @@ This project is licensed under the MIT License. See the [LICENSE](https://openso
 
 Our project references the codes in the following repos. Thanks for their works and sharing.
 * [M3AE](https://github.com/zhjohnchan/M3AE)
+
+## Citation
+```bibtex
+@article{liu2026cimbmvqa,
+  title     = {CIMB-MVQA: Causal intervention on modality-specific biases for medical visual question answering},
+  author    = {Liu, Bing and Liu, Lijun and Ding, Jiaman and Yang, Xiaobing and Peng, Wei and Liu, Li},
+  journal   = {Medical Image Analysis},
+  year      = {2026},
+  month     = {Jan},
+  volume    = {107},
+  number    = {Pt B},
+  pages     = {103850},
+  issn      = {1361-8415},
+  doi       = {10.1016/j.media.2025.103850},
+  url       = {https://www.sciencedirect.com/science/article/pii/S1361841525003962},
+  publisher = {Elsevier},
+  abstract  = {Medical Visual Question Answering (Med-VQA) systems frequently rely on spurious visual and language cues produced by dataset biases and structural confounders, which undermines robustness and real-world generalization. To alleviate spurious cue reliance attributable to particular confounders, we propose CIMB-MVQA, a framework for Causal Intervention on Modality-specific Biases, which suppresses cross-modal bias by explicitly modeling and adjusting for confounding factors. For unobservable visual confounders, we introduce a front-door adjustment pipeline combining contrastive representation learning, feature disentanglement, and dual semantic masking to eliminate co-occurring but non-causal visual patterns. For observable linguistic confounders, we apply a back-door adjustment strategy using a global language bias dictionary to detect spurious signals. A vision-guided pseudo-token injection mechanism is further designed to embed critical visual cues into the language stream, reducing language dominance and aligning causal semantics across modalities. This is followed by a causal graph reasoning module that explicitly intervenes in bias-inducing paths. Experiments on multiple Med-VQA benchmarks demonstrate that CIMB-MVQA significantly improves answer accuracy and causal interpretability. Additionally, on the curated imbalanced VQA-RAD* and a suite of controlled-shift datasets, confounder-level experiments consistently show robust causal generalization under realistic bias conditions. The source code is publicly available at https://github.com/cloneiq/CIMB-MVQA.},
+  keywords  = {Medical visual question answering; Causal inference; Causal intervention; Multimodal bias mitigation},
+  note      = {Epub 2025 Oct 24}
+}
+```
+
 
 ## Contact
 
