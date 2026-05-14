@@ -25,7 +25,8 @@
   <b>Official implementation of CIMB-MVQA</b><br>
   Causal Intervention · Modality-specific Bias Mitigation · Medical Visual Question Answering
 </p>
-# Overview
+
+## Overview
 
 **CIMB-MVQA** is the official implementation of:
 
@@ -52,6 +53,7 @@ This paper was published in **Medical Image Analysis**, Volume 107, Part B, 2026
     <b>https://github.com/cloneiq/CIMB-MVQA</b>
   </a>
 </p>
+
 ## Key Features
 
 - Causal intervention framework to systematically debias both visual and linguistic confounders.
