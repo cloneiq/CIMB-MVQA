@@ -44,15 +44,9 @@ CIMB-MVQA addresses cross-modal bias by explicitly modeling and adjusting for co
   <sub>Overall architecture of CIMB-MVQA.</sub>
 </p>
 
-
-
-This paper was published in **Medical Image Analysis**, Volume 107, Part B, 2026, Article 103850. The source code is publicly available at:
-
-<p align="center">
-  <a href="https://github.com/cloneiq/CIMB-MVQA">
+This paper was published in **Medical Image Analysis**, Volume 107, Part B, 2026, Article 103850. The source code is publicly available at: <a href="https://github.com/cloneiq/CIMB-MVQA">
     <b>https://github.com/cloneiq/CIMB-MVQA</b>
   </a>
-</p>
 
 ## Key Features
 
@@ -230,9 +224,9 @@ This project is licensed under the **MIT License**. See the [LICENSE](https://op
 
 ## Contact
 
-**First Author**: Bing Liu, Kunming University of Science and Technology Kunming, Yunnan CHINA, email: 2717382435@qq.com
+Bing Liu, Kunming University of Science and Technology Kunming, Yunnan CHINA, email: 2717382435@qq.com
 
-**Corresponding Author**: Lijun Liu, Associate Professor (Ph.D.), Kunming University of Science and Technology Kunming, Yunnan CHINA, email: cloneiq@kust.edu.cn
+Lijun Liu, Associate Professor (Ph.D.), Kunming University of Science and Technology Kunming, Yunnan CHINA, email: cloneiq@kust.edu.cn
 
 <p align="center">
   <sub>Maintained for reproducible, interpretable, and robust Medical Visual Question Answering research.</sub>
