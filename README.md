@@ -44,7 +44,7 @@ CIMB-MVQA addresses cross-modal bias by explicitly modeling and adjusting for co
   <sub>Overall architecture of CIMB-MVQA.</sub>
 </p>
 
-This paper was published in **Medical Image Analysis**, Volume 107, Part B, 2026, Article 103850. The source code is publicly available at: <a href="https://github.com/cloneiq/CIMB-MVQA">
+This paper has been published in **Medical Image Analysis**, Volume 107, Part B, 2026, Article 103850. The source code is publicly available at: <a href="https://github.com/cloneiq/CIMB-MVQA">
     <b>https://github.com/cloneiq/CIMB-MVQA</b>
   </a>
 
